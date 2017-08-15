@@ -1,0 +1,16 @@
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\bin\Debug\Urdu TTS App.exe.config
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\bin\Debug\Urdu TTS App.exe
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\bin\Debug\Urdu TTS App.pdb
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu TTS App.csprojResolveAssemblyReference.cache
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.Properties.Resources.resources
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu TTS App.csproj.GenerateResource.Cache
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu TTS App.exe
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu TTS App.pdb
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.UrduTTSApp.resources
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\bin\Debug\DatabaseLayer.dll
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\bin\Debug\Microsoft.Speech.dll
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\bin\Debug\Phonetics.dll
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\bin\Debug\SSML.dll
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\bin\Debug\DatabaseLayer.pdb
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\bin\Debug\Phonetics.pdb
+F:\OneDrive\University Stuff\7th Semester\Fyp\Text to Speech\TTS App\Urdu TTS App\Urdu TTS App\bin\Debug\SSML.pdb
