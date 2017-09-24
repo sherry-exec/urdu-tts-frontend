@@ -33,18 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DatabaseLayer">
-      <HintPath>..\..\SSML\SSML\bin\Debug\DatabaseLayer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Speech, Version=11.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Microsoft SDKs\Speech\v11.0\Assembly\Microsoft.Speech.dll</HintPath>
-    </Reference>
-    <Reference Include="Phonetics">
-      <HintPath>..\..\Phonetics\Phonetics\bin\Debug\Phonetics.dll</HintPath>
-    </Reference>
-    <Reference Include="SSML">
-      <HintPath>..\..\SSML\SSML\bin\Debug\SSML.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,8 +48,23 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UrduTTS">
+      <HintPath>..\..\UrduTTS Lib\UrduTTS\bin\Debug\UrduTTS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NewWordEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewWordEntry.designer.cs">
+      <DependentUpon>NewWordEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewPhonemeEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewPhonemeEntry.designer.cs">
+      <DependentUpon>NewPhonemeEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Urdu TTS App.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="NewWordEntry.resx">
+      <DependentUpon>NewWordEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewPhonemeEntry.resx">
+      <DependentUpon>NewPhonemeEntry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Urdu TTS App.resx">
       <DependentUpon>Urdu TTS App.cs</DependentUpon>
     </EmbeddedResource>
