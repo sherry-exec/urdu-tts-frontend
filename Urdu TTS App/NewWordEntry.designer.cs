@@ -66,32 +66,32 @@
             // 
             // txtInputUrdu
             // 
-            this.txtInputUrdu.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.txtInputUrdu.Location = new System.Drawing.Point(384, 30);
+            this.txtInputUrdu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInputUrdu.Location = new System.Drawing.Point(384, 28);
             this.txtInputUrdu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtInputUrdu.Name = "txtInputUrdu";
             this.txtInputUrdu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtInputUrdu.Size = new System.Drawing.Size(231, 30);
+            this.txtInputUrdu.Size = new System.Drawing.Size(231, 35);
             this.txtInputUrdu.TabIndex = 1;
             this.txtInputUrdu.TextChanged += new System.EventHandler(this.txtInputUrdu_TextChanged);
             this.txtInputUrdu.Leave += new System.EventHandler(this.txtInputUrdu_Leave);
             // 
             // cmBoxDiacSuggestion
             // 
-            this.cmBoxDiacSuggestion.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.cmBoxDiacSuggestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmBoxDiacSuggestion.FormattingEnabled = true;
-            this.cmBoxDiacSuggestion.Location = new System.Drawing.Point(384, 93);
+            this.cmBoxDiacSuggestion.Location = new System.Drawing.Point(384, 90);
             this.cmBoxDiacSuggestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmBoxDiacSuggestion.Name = "cmBoxDiacSuggestion";
             this.cmBoxDiacSuggestion.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cmBoxDiacSuggestion.Size = new System.Drawing.Size(231, 31);
+            this.cmBoxDiacSuggestion.Size = new System.Drawing.Size(231, 37);
             this.cmBoxDiacSuggestion.TabIndex = 2;
             this.cmBoxDiacSuggestion.Leave += new System.EventHandler(this.cmBoxDiacSuggestion_Leave);
             // 
             // txtIPARep
             // 
             this.txtIPARep.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.txtIPARep.Location = new System.Drawing.Point(384, 155);
+            this.txtIPARep.Location = new System.Drawing.Point(384, 154);
             this.txtIPARep.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIPARep.Name = "txtIPARep";
             this.txtIPARep.Size = new System.Drawing.Size(231, 30);
@@ -125,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(412, 74);
+            this.label3.Location = new System.Drawing.Point(412, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(203, 15);
             this.label3.TabIndex = 3;
@@ -134,7 +134,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(501, 134);
+            this.label4.Location = new System.Drawing.Point(501, 135);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 15);
             this.label4.TabIndex = 3;
@@ -274,7 +274,7 @@
             // numDiacsFound
             // 
             this.numDiacsFound.AutoSize = true;
-            this.numDiacsFound.Location = new System.Drawing.Point(359, 101);
+            this.numDiacsFound.Location = new System.Drawing.Point(359, 100);
             this.numDiacsFound.Name = "numDiacsFound";
             this.numDiacsFound.Size = new System.Drawing.Size(14, 15);
             this.numDiacsFound.TabIndex = 17;

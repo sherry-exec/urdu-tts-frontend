@@ -9,8 +9,6 @@ namespace Urdu_TTS_App
 {
     public partial class UrduTTSApp : Form
     {
-        System.Windows.Forms.Timer parseTimer = new System.Windows.Forms.Timer();
-
         // Speak variables
         SsmlEncoding synthesizer = new SsmlEncoding();
         bool playing = false;
@@ -20,28 +18,19 @@ namespace Urdu_TTS_App
         bool analyzing = false;
 
         // User selected diacritics
-        List<Token> finalTokens = new List<Token>();
-        List<WordRecord> selectedDiacritics = new List<WordRecord>();
-        List<WordRecord> currentDiacritics = new List<WordRecord>();
+        List<WordRecord> suggestedDiacritics = new List<WordRecord>();
 
         public UrduTTSApp()
         {
             InitializeComponent();
-
-            TextProcessing.Init();
-
-            // Analyser frequency - once per 0.75 sec
-            parseTimer.Interval = 750;
-            parseTimer.Tick += Timer_Tick;
         }
+
+        #region Form Controls
         private void btnSpeak_Click(object sender, EventArgs e)
         {
             try
             {
-                // wait while text processing is not completed
-                while (analyzing) ;
-
-                synthesizer.SpeakStart(TextProcessing.ToUPSReps(finalTokens, selectedDiacritics));
+                synthesizer.SpeakStart(TextProcessing.ToUPSReps(txtUrdu.Text.Trim()));
                 playing = true;
             }
             catch (Exception ex)
@@ -55,7 +44,7 @@ namespace Urdu_TTS_App
         {
             try
             {
-                synthesizer.SaveToFile(TextProcessing.ToUPSReps(finalTokens, selectedDiacritics), Directory.GetCurrentDirectory() + "\\Output Wav\\file.wav");
+                synthesizer.SaveToFile(TextProcessing.ToUPSReps(txtUrdu.Text.Trim()), Directory.GetCurrentDirectory() + "\\Output Wav\\file.wav");
             }
             catch (Exception ex)
             {
@@ -81,7 +70,6 @@ namespace Urdu_TTS_App
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnStop_Click(object sender, EventArgs e)
         {
             try
@@ -91,6 +79,18 @@ namespace Urdu_TTS_App
             catch (Exception ex)
             {
                 playing = false;
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnNewWord_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                new NewWordEntry().ShowDialog();
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
@@ -130,37 +130,63 @@ namespace Urdu_TTS_App
                 MessageBox.Show(ex.Message);
             }
         }
+        #endregion
 
-        private void btnNewWord_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                new NewWordEntry().ShowDialog();
-                startAnalyseTextThread();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
+        #region Events
         private void txtUrdu_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
-                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D)
+                // CTRL + S : Speak shortcut
+                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.S)
+                {
+                    synthesizer.SpeakStart(TextProcessing.ToUPSReps(txtUrdu.Text.Trim()));
+                    playing = true;
+                }
+                // CTRL + F : Save to file shortcut
+                else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
+                {
+                    synthesizer.SaveToFile(TextProcessing.ToUPSReps(txtUrdu.Text.Trim()), Directory.GetCurrentDirectory() + "\\Output Wav\\file.wav");
+                }
+                // CTRL + P : Parse/analyse text shortcut
+                else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.P)
+                {
+                    IconSync.Visible = true;
+                    analyser = new Thread(new ThreadStart(analyseTextForUnrecognizedWords));
+                    analyser.Start();
+                }
+                // CTRL + D : Diacritic suggestion pop-up
+                else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D)
                 {
                     listDiacriticsSuggestion.Items.Clear();
 
                     string selectedWord = txtUrdu.SelectedText.Trim();
-                    currentDiacritics = DataAccessLayer.SearchRecordsByWord(selectedWord);
-                    if (currentDiacritics != null)
-                    {
-                        for (int i = 0; i < currentDiacritics.Count; i++)
-                        {
-                            listDiacriticsSuggestion.Items.Add(currentDiacritics[i].DiacriticRep);
-                        }
 
+                    // First try, if the selection is a WORD (simple, not with diacritics)
+                    suggestedDiacritics = DataAccessLayer.SearchRecordsByWord(selectedWord);
+                    if (suggestedDiacritics != null)
+                    {
+                        for (int i = 0; i < suggestedDiacritics.Count; i++)
+                        {
+                            listDiacriticsSuggestion.Items.Add(suggestedDiacritics[i].DiacriticRep);
+                        }
+                    }
+                    // Second try, if the selection is a DIACRITICS REPRESENTATION (not simple word)
+                    else
+                    {
+                        suggestedDiacritics = DataAccessLayer.SearchRecordsByWord(DataAccessLayer.UrduWordFromDiacriticRep(selectedWord));
+                        if (suggestedDiacritics != null)
+                        {
+                            for (int i = 0; i < suggestedDiacritics.Count; i++)
+                            {
+                                listDiacriticsSuggestion.Items.Add(suggestedDiacritics[i].DiacriticRep);
+                            }
+                        }
+                    }
+
+                    // If there are some diacritics to select from
+                    if (listDiacriticsSuggestion.Items.Count > 0)
+                    {
                         listDiacriticsSuggestion.Visible = true;
                         listDiacriticsSuggestion.SelectedIndex = 0;
                         listDiacriticsSuggestion.Focus();
@@ -173,19 +199,40 @@ namespace Urdu_TTS_App
             }
             catch (Exception ex)
             {
+                playing = false;
                 MessageBox.Show(ex.Message);
             }
         }
+
+        // User selected diacritic representation for a word
         private void listDiacriticsSuggestion_KeyPress(object sender, KeyPressEventArgs e)
         {
             try
             {
+                // User selected a diacritic representation for a word
                 if (e.KeyChar == '\r')
                 {
-                    enterUserSelectedDiacritic(listDiacriticsSuggestion.SelectedIndex);
+                    // replace that word with its selected diacritic representation
+                    string w = txtUrdu.SelectedText;
+                    string d = "";
+
+                    if (w[0] == ' ')
+                        d += " ";
+                    d += listDiacriticsSuggestion.SelectedItem.ToString();
+                    if (w[w.Length - 1] == ' ')
+                        d += " ";
+
+                    txtUrdu.SelectedText = d;
+                }
+                else if(e.KeyChar == ' ')
+                {
+                    List<string> phoneme = new List<string>();
+                    phoneme.Add(suggestedDiacritics[listDiacriticsSuggestion.SelectedIndex].UpsRep);
+                    synthesizer.SpeakStart(phoneme);
+                    return;
                 }
 
-                currentDiacritics = null;
+                suggestedDiacritics = null;
                 listDiacriticsSuggestion.Visible = false;
                 txtUrdu.Focus();
             }
@@ -195,6 +242,7 @@ namespace Urdu_TTS_App
             }
         }
 
+        // User clicked a word in unrecognized list to enter it into database
         private void listUnrecognizedWords_MouseClick(object sender, MouseEventArgs e)
         {
             try
@@ -203,8 +251,6 @@ namespace Urdu_TTS_App
                 if (index != ListBox.NoMatches)
                 {
                     new NewWordEntry(listUnrecognizedWords.Items[index].ToString()).ShowDialog();
-
-                    startAnalyseTextThread();
                 }
             }
             catch (Exception ex)
@@ -212,104 +258,25 @@ namespace Urdu_TTS_App
                 MessageBox.Show(ex.Message);
             }
         }
+        #endregion
 
-        private void txtUrdu_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                parseTimer.Stop();
-                parseTimer.Start();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                parseTimer.Stop();
-                startAnalyseTextThread();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void startAnalyseTextThread()
-        {
-            //if (analyser != null && analyser.IsAlive)
-                //analyser.Abort();
-
-            //analyser = new Thread(new ThreadStart(analyseText));
-            //analyser.Start();
-
-            analyseText();
-        }
-        private void analyseText()
+        #region Private Utility Functions
+        private void analyseTextForUnrecognizedWords()
         {
 
             if (analyzing) return;
             analyzing = true;
 
-            List<Tuple<bool, Token>> wordsInParagraph = TextProcessing.classifyTokens(txtUrdu.Text.Trim());
-
-            finalTokens.Clear();
             listUnrecognizedWords.Items.Clear();
-
-            for (int i = 0; i < wordsInParagraph.Count; i++)
-                if (wordsInParagraph[i].Item1)  // If word is in the database (i.e. entered)
-                    finalTokens.Add(wordsInParagraph[i].Item2);      // store it internally
-                else
-                    listUnrecognizedWords.Items.Add(wordsInParagraph[i].Item2.valuePart);     // otherwise, show it in ListBox
-
-            // Enter default diacritics for those words whose diacritic are not selected by the user, yet
-            bool found = true;
-            for (int i = 0; i < finalTokens.Count; i++)             // for each tokens retrived
+            List<string> unrecognizedWords = TextProcessing.UnrecognizedWords(txtUrdu.Text.Trim());
+            for (int i = 0; i < unrecognizedWords.Count; i++)
             {
-                if (finalTokens[i].classPart == TokenType.Word)
-                {
-                    found = false;
-                    for (int j = 0; j < selectedDiacritics.Count; j++)  // check if they are already entered
-                    {
-                        if (finalTokens[i].valuePart == selectedDiacritics[j].UrduWord)
-                        {
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (!found)
-                    {
-                        selectedDiacritics.Add(DataAccessLayer.SearchRecordsByWord(finalTokens[i].valuePart)[0]);
-                    }
-                }
+                listUnrecognizedWords.Items.Add(unrecognizedWords[i]);
             }
-            
+
             analyzing = false;
+            IconSync.Visible = false;
         }
-
-        private void enterUserSelectedDiacritic(int selectedIndex)
-        {
-            try
-            {
-                for (int i = 0; i < selectedDiacritics.Count; i++)
-                {
-                    if (selectedDiacritics[i].UrduWord == currentDiacritics[selectedIndex].UrduWord)
-                    {
-                        selectedDiacritics[i] = currentDiacritics[selectedIndex];
-                        return;
-                    }
-                }
-
-                selectedDiacritics.Add(currentDiacritics[selectedIndex]);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        #endregion
     }
 }

@@ -45,8 +45,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnSaveToFile = new System.Windows.Forms.Button();
             this.listDiacriticsSuggestion = new System.Windows.Forms.ListBox();
+            this.IconSync = new System.Windows.Forms.PictureBox();
+            this.btnHelp = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeechRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IconSync)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUrdu
@@ -58,7 +62,6 @@
             this.txtUrdu.Size = new System.Drawing.Size(578, 290);
             this.txtUrdu.TabIndex = 0;
             this.txtUrdu.Text = "";
-            this.txtUrdu.TextChanged += new System.EventHandler(this.txtUrdu_TextChanged);
             this.txtUrdu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUrdu_KeyDown);
             // 
             // btnSpeak
@@ -123,7 +126,7 @@
             // 
             this.SpeechRate.Location = new System.Drawing.Point(557, 412);
             this.SpeechRate.Maximum = 4;
-            this.SpeechRate.Minimum = -2;
+            this.SpeechRate.Minimum = -1;
             this.SpeechRate.Name = "SpeechRate";
             this.SpeechRate.Size = new System.Drawing.Size(215, 45);
             this.SpeechRate.TabIndex = 6;
@@ -162,7 +165,7 @@
             // chkWordCaching
             // 
             this.chkWordCaching.AutoSize = true;
-            this.chkWordCaching.Location = new System.Drawing.Point(187, 388);
+            this.chkWordCaching.Location = new System.Drawing.Point(194, 388);
             this.chkWordCaching.Name = "chkWordCaching";
             this.chkWordCaching.Size = new System.Drawing.Size(103, 21);
             this.chkWordCaching.TabIndex = 12;
@@ -173,7 +176,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(187, 412);
+            this.label6.Location = new System.Drawing.Point(191, 412);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(136, 34);
             this.label6.TabIndex = 13;
@@ -195,9 +198,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 388);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(155, 51);
+            this.label5.Size = new System.Drawing.Size(145, 51);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Double click on word in list\r\nabove to enter that word\r\nin the database";
+            this.label5.Text = "Click on word in list\r\nabove to enter that word\r\nin the database";
             // 
             // btnSaveToFile
             // 
@@ -225,11 +228,49 @@
             this.listDiacriticsSuggestion.Visible = false;
             this.listDiacriticsSuggestion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listDiacriticsSuggestion_KeyPress);
             // 
+            // IconSync
+            // 
+            this.IconSync.BackColor = System.Drawing.Color.White;
+            this.IconSync.BackgroundImage = global::Urdu_TTS_App.Properties.Resources.sync_flat;
+            this.IconSync.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.IconSync.Location = new System.Drawing.Point(13, 84);
+            this.IconSync.Name = "IconSync";
+            this.IconSync.Size = new System.Drawing.Size(174, 174);
+            this.IconSync.TabIndex = 19;
+            this.IconSync.TabStop = false;
+            this.IconSync.Visible = false;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Help;
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Location = new System.Drawing.Point(752, 9);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(18, 18);
+            this.btnHelp.TabIndex = 20;
+            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnHelp.UseVisualStyleBackColor = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(669, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 17);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "help / guide >";
+            // 
             // UrduTTSApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnHelp);
+            this.Controls.Add(this.IconSync);
             this.Controls.Add(this.listDiacriticsSuggestion);
             this.Controls.Add(this.btnSaveToFile);
             this.Controls.Add(this.label5);
@@ -256,6 +297,7 @@
             this.Text = "Urdu Text to Speech Application";
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeechRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IconSync)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,6 +322,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSaveToFile;
         private System.Windows.Forms.ListBox listDiacriticsSuggestion;
+        private System.Windows.Forms.PictureBox IconSync;
+        private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Label label7;
     }
 }
 

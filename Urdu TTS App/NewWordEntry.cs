@@ -382,14 +382,20 @@ namespace Urdu_TTS_App
         {
             try
             {
+                if (txtUPSRep.Text.Trim() == String.Empty)
+                    return;
+
                 List<string> upsPhonemes = new List<string>();
                 upsPhonemes.Add(txtUPSRep.Text.Trim());
 
                 speechSynth.Volume = Convert.ToInt16(volumeBar.Value * 10);
                 speechSynth.SpeakStart(upsPhonemes, false);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (ex.Message.StartsWith("'ph'"))
+                    return;
+
                 throw;
             }
         }
