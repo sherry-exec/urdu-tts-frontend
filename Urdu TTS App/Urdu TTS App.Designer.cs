@@ -52,10 +52,10 @@
             // txtUrdu
             // 
             this.txtUrdu.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.txtUrdu.Location = new System.Drawing.Point(188, 29);
+            this.txtUrdu.Location = new System.Drawing.Point(194, 29);
             this.txtUrdu.Name = "txtUrdu";
             this.txtUrdu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtUrdu.Size = new System.Drawing.Size(584, 290);
+            this.txtUrdu.Size = new System.Drawing.Size(578, 290);
             this.txtUrdu.TabIndex = 0;
             this.txtUrdu.Text = "";
             this.txtUrdu.TextChanged += new System.EventHandler(this.txtUrdu_TextChanged);
@@ -74,7 +74,7 @@
             // 
             // btnPauseResume
             // 
-            this.btnPauseResume.Location = new System.Drawing.Point(336, 325);
+            this.btnPauseResume.Location = new System.Drawing.Point(340, 325);
             this.btnPauseResume.Name = "btnPauseResume";
             this.btnPauseResume.Size = new System.Drawing.Size(140, 57);
             this.btnPauseResume.TabIndex = 2;
@@ -84,7 +84,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(188, 325);
+            this.btnStop.Location = new System.Drawing.Point(194, 325);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(140, 57);
             this.btnStop.TabIndex = 3;
@@ -94,9 +94,9 @@
             // 
             // VolumeBar
             // 
-            this.VolumeBar.Location = new System.Drawing.Point(389, 412);
+            this.VolumeBar.Location = new System.Drawing.Point(340, 412);
             this.VolumeBar.Name = "VolumeBar";
-            this.VolumeBar.Size = new System.Drawing.Size(180, 45);
+            this.VolumeBar.Size = new System.Drawing.Size(211, 45);
             this.VolumeBar.TabIndex = 4;
             this.VolumeBar.Value = 7;
             this.VolumeBar.Scroll += new System.EventHandler(this.VolumeBar_Scroll);
@@ -104,7 +104,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(386, 392);
+            this.label1.Location = new System.Drawing.Point(337, 392);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 17);
             this.label1.TabIndex = 5;
@@ -113,7 +113,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(589, 392);
+            this.label2.Location = new System.Drawing.Point(554, 392);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 7;
@@ -121,23 +121,23 @@
             // 
             // SpeechRate
             // 
-            this.SpeechRate.Location = new System.Drawing.Point(592, 412);
-            this.SpeechRate.Maximum = 3;
-            this.SpeechRate.Minimum = 1;
+            this.SpeechRate.Location = new System.Drawing.Point(557, 412);
+            this.SpeechRate.Maximum = 4;
+            this.SpeechRate.Minimum = -2;
             this.SpeechRate.Name = "SpeechRate";
-            this.SpeechRate.Size = new System.Drawing.Size(180, 45);
+            this.SpeechRate.Size = new System.Drawing.Size(215, 45);
             this.SpeechRate.TabIndex = 6;
             this.SpeechRate.Value = 1;
             this.SpeechRate.Scroll += new System.EventHandler(this.SpeechRate_Scroll);
             // 
             // listUnrecognizedWords
             // 
-            this.listUnrecognizedWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listUnrecognizedWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listUnrecognizedWords.FormattingEnabled = true;
-            this.listUnrecognizedWords.ItemHeight = 20;
+            this.listUnrecognizedWords.ItemHeight = 31;
             this.listUnrecognizedWords.Location = new System.Drawing.Point(12, 29);
             this.listUnrecognizedWords.Name = "listUnrecognizedWords";
-            this.listUnrecognizedWords.Size = new System.Drawing.Size(170, 284);
+            this.listUnrecognizedWords.Size = new System.Drawing.Size(176, 283);
             this.listUnrecognizedWords.TabIndex = 8;
             this.listUnrecognizedWords.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listUnrecognizedWords_MouseClick);
             // 
@@ -184,9 +184,9 @@
             this.btnNewWord.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewWord.Location = new System.Drawing.Point(12, 325);
             this.btnNewWord.Name = "btnNewWord";
-            this.btnNewWord.Size = new System.Drawing.Size(170, 57);
+            this.btnNewWord.Size = new System.Drawing.Size(176, 57);
             this.btnNewWord.TabIndex = 14;
-            this.btnNewWord.Text = "Add New Word Records";
+            this.btnNewWord.Text = "Add New Word Records / Modify Existing";
             this.btnNewWord.UseVisualStyleBackColor = true;
             this.btnNewWord.Click += new System.EventHandler(this.btnNewWord_Click);
             // 
@@ -202,7 +202,7 @@
             // btnSaveToFile
             // 
             this.btnSaveToFile.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveToFile.Location = new System.Drawing.Point(484, 325);
+            this.btnSaveToFile.Location = new System.Drawing.Point(486, 325);
             this.btnSaveToFile.Name = "btnSaveToFile";
             this.btnSaveToFile.Size = new System.Drawing.Size(140, 57);
             this.btnSaveToFile.TabIndex = 16;
@@ -250,6 +250,7 @@
             this.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "UrduTTSApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Urdu Text to Speech Application";

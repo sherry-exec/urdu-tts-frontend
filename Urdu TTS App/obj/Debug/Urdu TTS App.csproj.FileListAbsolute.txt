@@ -62,3 +62,17 @@ F:\OneDrive\University Stuff\7th Semester\Fyp\Code\Urdu TTS App\Urdu TTS App\obj
 F:\OneDrive\University Stuff\7th Semester\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.UrduTTSApp.resources
 F:\OneDrive\University Stuff\7th Semester\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.Properties.Resources.resources
 F:\OneDrive\University Stuff\7th Semester\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu TTS App.csproj.GenerateResource.Cache
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\bin\Debug\Urdu TTS App.exe.config
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu TTS App.exe
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu TTS App.pdb
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\bin\Debug\Urdu TTS App.exe
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\bin\Debug\Urdu TTS App.pdb
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\bin\Debug\Microsoft.Speech.dll
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\bin\Debug\UrduTTS.dll
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\bin\Debug\UrduTTS.pdb
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu TTS App.csprojResolveAssemblyReference.cache
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.NewWordEntry.resources
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.NewPhonemeEntry.resources
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.UrduTTSApp.resources
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.Properties.Resources.resources
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu TTS App.csproj.GenerateResource.Cache

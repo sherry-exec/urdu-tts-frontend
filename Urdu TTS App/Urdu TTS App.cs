@@ -20,15 +20,16 @@ namespace Urdu_TTS_App
         bool analyzing = false;
 
         // User selected diacritics
-        List<WordRecord> selectedDiacritics = null;
-        List<WordRecord> currentDiacritics = null;
+        List<Token> finalTokens = new List<Token>();
+        List<WordRecord> selectedDiacritics = new List<WordRecord>();
+        List<WordRecord> currentDiacritics = new List<WordRecord>();
 
         public UrduTTSApp()
         {
             InitializeComponent();
 
             TextProcessing.Init();
-            
+
             // Analyser frequency - once per 0.75 sec
             parseTimer.Interval = 750;
             parseTimer.Tick += Timer_Tick;
@@ -40,7 +41,7 @@ namespace Urdu_TTS_App
                 // wait while text processing is not completed
                 while (analyzing) ;
 
-                synthesizer.SpeakStart(txtUrdu.Text.Trim());
+                synthesizer.SpeakStart(TextProcessing.ToUPSReps(finalTokens, selectedDiacritics));
                 playing = true;
             }
             catch (Exception ex)
@@ -54,7 +55,7 @@ namespace Urdu_TTS_App
         {
             try
             {
-                synthesizer.SaveToFile(txtUrdu.Text.Trim(), Directory.GetCurrentDirectory() + "\\Output Wav\\file.wav");
+                synthesizer.SaveToFile(TextProcessing.ToUPSReps(finalTokens, selectedDiacritics), Directory.GetCurrentDirectory() + "\\Output Wav\\file.wav");
             }
             catch (Exception ex)
             {
@@ -67,7 +68,7 @@ namespace Urdu_TTS_App
         {
             try
             {
-                if(playing)
+                if (playing)
                     synthesizer.SpeakPause();
                 else
                     synthesizer.SpeakResume();
@@ -152,8 +153,8 @@ namespace Urdu_TTS_App
                     listDiacriticsSuggestion.Items.Clear();
 
                     string selectedWord = txtUrdu.SelectedText.Trim();
-                    currentDiacritics= DataAccessLayer.SearchRecordsByWord(selectedWord);
-                    if(currentDiacritics != null)
+                    currentDiacritics = DataAccessLayer.SearchRecordsByWord(selectedWord);
+                    if (currentDiacritics != null)
                     {
                         for (int i = 0; i < currentDiacritics.Count; i++)
                         {
@@ -179,7 +180,7 @@ namespace Urdu_TTS_App
         {
             try
             {
-                if(e.KeyChar == '\r')
+                if (e.KeyChar == '\r')
                 {
                     enterUserSelectedDiacritic(listDiacriticsSuggestion.SelectedIndex);
                 }
@@ -240,34 +241,54 @@ namespace Urdu_TTS_App
 
         private void startAnalyseTextThread()
         {
-            if (analyser != null && analyser.IsAlive)
-                analyser.Abort();
+            //if (analyser != null && analyser.IsAlive)
+                //analyser.Abort();
 
-            analyser = new Thread(new ThreadStart(analyseText));
-            analyser.Start();
+            //analyser = new Thread(new ThreadStart(analyseText));
+            //analyser.Start();
+
+            analyseText();
         }
         private void analyseText()
         {
-            try
-            {
-                if (analyzing) return;
-                analyzing = true;
 
-                List<string> unenteredWords = TextProcessing.UnrecognizedWords(txtUrdu.Text.Trim());
-                listUnrecognizedWords.Items.Clear();
-                for (int i = 0; i < unenteredWords.Count; i++)
+            if (analyzing) return;
+            analyzing = true;
+
+            List<Tuple<bool, Token>> wordsInParagraph = TextProcessing.classifyTokens(txtUrdu.Text.Trim());
+
+            finalTokens.Clear();
+            listUnrecognizedWords.Items.Clear();
+
+            for (int i = 0; i < wordsInParagraph.Count; i++)
+                if (wordsInParagraph[i].Item1)  // If word is in the database (i.e. entered)
+                    finalTokens.Add(wordsInParagraph[i].Item2);      // store it internally
+                else
+                    listUnrecognizedWords.Items.Add(wordsInParagraph[i].Item2.valuePart);     // otherwise, show it in ListBox
+
+            // Enter default diacritics for those words whose diacritic are not selected by the user, yet
+            bool found = true;
+            for (int i = 0; i < finalTokens.Count; i++)             // for each tokens retrived
+            {
+                if (finalTokens[i].classPart == TokenType.Word)
                 {
-                    listUnrecognizedWords.Items.Add(unenteredWords[i]);
+                    found = false;
+                    for (int j = 0; j < selectedDiacritics.Count; j++)  // check if they are already entered
+                    {
+                        if (finalTokens[i].valuePart == selectedDiacritics[j].UrduWord)
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        selectedDiacritics.Add(DataAccessLayer.SearchRecordsByWord(finalTokens[i].valuePart)[0]);
+                    }
                 }
             }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                analyzing = false;
-            }
+            
+            analyzing = false;
         }
 
         private void enterUserSelectedDiacritic(int selectedIndex)

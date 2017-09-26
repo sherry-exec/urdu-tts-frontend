@@ -386,7 +386,7 @@ namespace Urdu_TTS_App
                 upsPhonemes.Add(txtUPSRep.Text.Trim());
 
                 speechSynth.Volume = Convert.ToInt16(volumeBar.Value * 10);
-                speechSynth.SpeakStart(upsPhonemes);
+                speechSynth.SpeakStart(upsPhonemes, false);
             }
             catch (Exception)
             {

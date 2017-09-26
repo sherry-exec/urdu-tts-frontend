@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNewWordRecord = new System.Windows.Forms.Button();
             this.txtInputUrdu = new System.Windows.Forms.TextBox();
             this.cmBoxDiacSuggestion = new System.Windows.Forms.ComboBox();
@@ -60,7 +60,7 @@
             this.btnNewWordRecord.Name = "btnNewWordRecord";
             this.btnNewWordRecord.Size = new System.Drawing.Size(231, 48);
             this.btnNewWordRecord.TabIndex = 5;
-            this.btnNewWordRecord.Text = "Save Record To Dictionay";
+            this.btnNewWordRecord.Text = "Save Record To Dictionary";
             this.btnNewWordRecord.UseVisualStyleBackColor = true;
             this.btnNewWordRecord.Click += new System.EventHandler(this.btnNewWordRecord_Click);
             // 
@@ -168,22 +168,22 @@
             this.dgPhonemeDict.AllowUserToAddRows = false;
             this.dgPhonemeDict.AllowUserToDeleteRows = false;
             this.dgPhonemeDict.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgPhonemeDict.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgPhonemeDict.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgPhonemeDict.Location = new System.Drawing.Point(12, 13);
             this.dgPhonemeDict.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgPhonemeDict.Name = "dgPhonemeDict";
             this.dgPhonemeDict.ReadOnly = true;
             this.dgPhonemeDict.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgPhonemeDict.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgPhonemeDict.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgPhonemeDict.Size = new System.Drawing.Size(323, 494);
             this.dgPhonemeDict.TabIndex = 8;
             this.dgPhonemeDict.TabStop = false;
@@ -309,6 +309,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "NewWordEntry";
             this.Text = "Word Database Modifier";
             this.Load += new System.EventHandler(this.MainForm_Load);
