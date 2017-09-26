@@ -76,3 +76,5 @@ C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_Ap
 C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.UrduTTSApp.resources
 C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.Properties.Resources.resources
 C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu TTS App.csproj.GenerateResource.Cache
+F:\OneDrive\University Stuff\7th Semester\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.About.resources
+C:\Users\ali_h\OneDrive\Fyp\Code\Urdu TTS App\Urdu TTS App\obj\Debug\Urdu_TTS_App.About.resources

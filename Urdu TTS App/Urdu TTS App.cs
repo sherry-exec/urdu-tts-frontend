@@ -95,6 +95,11 @@ namespace Urdu_TTS_App
             }
         }
 
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            new About().ShowDialog();
+        }
+
         private void VolumeBar_Scroll(object sender, EventArgs e)
         {
             try

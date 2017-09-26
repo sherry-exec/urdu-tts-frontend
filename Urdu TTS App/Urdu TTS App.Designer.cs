@@ -45,9 +45,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnSaveToFile = new System.Windows.Forms.Button();
             this.listDiacriticsSuggestion = new System.Windows.Forms.ListBox();
+            this.btnHelp = new System.Windows.Forms.Label();
             this.IconSync = new System.Windows.Forms.PictureBox();
-            this.btnHelp = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeechRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IconSync)).BeginInit();
@@ -228,6 +227,18 @@
             this.listDiacriticsSuggestion.Visible = false;
             this.listDiacriticsSuggestion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listDiacriticsSuggestion_KeyPress);
             // 
+            // btnHelp
+            // 
+            this.btnHelp.AutoSize = true;
+            this.btnHelp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.Location = new System.Drawing.Point(686, 9);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(86, 19);
+            this.btnHelp.TabIndex = 21;
+            this.btnHelp.Text = "About / Guide";
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // IconSync
             // 
             this.IconSync.BackColor = System.Drawing.Color.White;
@@ -240,35 +251,11 @@
             this.IconSync.TabStop = false;
             this.IconSync.Visible = false;
             // 
-            // btnHelp
-            // 
-            this.btnHelp.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Help;
-            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHelp.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(752, 9);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(18, 18);
-            this.btnHelp.TabIndex = 20;
-            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHelp.UseVisualStyleBackColor = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(669, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 17);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "help / guide >";
-            // 
             // UrduTTSApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.IconSync);
             this.Controls.Add(this.listDiacriticsSuggestion);
@@ -323,8 +310,7 @@
         private System.Windows.Forms.Button btnSaveToFile;
         private System.Windows.Forms.ListBox listDiacriticsSuggestion;
         private System.Windows.Forms.PictureBox IconSync;
-        private System.Windows.Forms.Button btnHelp;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label btnHelp;
     }
 }
 
